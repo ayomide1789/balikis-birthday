@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Balikis 🌹</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #1a0a0f;
+      color: white;
+      font-family: 'Lora', serif;
+      overflow-x: hidden;
+    }
+
+    /* FLOATING HEARTS */
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(180deg, #2d0a1a 0%, #1a0a0f 100%);
+    }
+
+    .hero-subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+      color: #f4a7b9;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(42px, 8vw, 80px);
+      color: #ff6b95;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      text-shadow: 0 0 30px rgba(255, 107, 149, 0.5);
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 4vw, 28px);
+      color: #f4a7b9;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+
+    .hero-divider {
+      font-size: 28px;
+      margin: 10px 0 30px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .alma {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(28px, 6vw, 52px);
+      color: #ff6b95;
+      text-shadow: 0 0 20px rgba(255, 107, 149, 0.6);
+    }
+
+    /* PHOTO GALLERY */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(32px, 6vw, 52px);
+      color: #ff6b95;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 20px rgba(255, 107, 149, 0.4);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 107, 149, 0.3);
+      transition: all 0.4s ease;
+      background: #2d0a1a;
+      aspect-ratio: 1;
+    }
+
+    .photo-card:hover {
+      transform: scale(1.03);
+      border-color: #ff6b95;
+      box-shadow: 0 0 25px rgba(255, 107, 149, 0.4);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #f4a7b9;
+      font-size: 48px;
+      min-height: 250px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .photo-placeholder p {
+      font-size: 14px;
+      margin-top: 10px;
+      font-family: 'Lora', serif;
+      color: #f4a7b9;
+      opacity: 0.7;
+    }
+
+    .photo-placeholder input {
+      display: none;
+    }
+
+    /* REASONS SECTION */
+    .reasons-bg {
+      background: linear-gradient(180deg, #1a0a0f 0%, #2d0a1a 50%, #1a0a0f 100%);
+    }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .reason-card {
+      background: rgba(255, 107, 149, 0.07);
+      border: 1px solid rgba(255, 107, 149, 0.25);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .reason-card:hover {
+      background: rgba(255, 107, 149, 0.13);
+      border-color: #ff6b95;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 107, 149, 0.2);
+    }
+
+    .reason-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .reason-card p {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      color: #f4d0d8;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* MESSAGE SECTION */
+    .message-box {
+      max-width: 780px;
+      margin: 0 auto;
+      background: rgba(255, 107, 149, 0.06);
+      border: 1px solid rgba(255, 107, 149, 0.2);
+      border-radius: 24px;
+      padding: 50px 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .quote-mark {
+      font-family: 'Dancing Script', cursive;
+      font-size: 80px;
+      color: rgba(255, 107, 149, 0.2);
+      line-height: 0.5;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .message-box p {
+      font-family: 'Lora', serif;
+      font-size: clamp(15px, 2.5vw, 17px);
+      color: #f4d0d8;
+      line-height: 2;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .message-sign {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      color: #ff6b95;
+      margin-top: 30px;
+    }
+
+    /* WISH BUTTON */
+    .wish-section {
+      text-align: center;
+      padding: 60px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .wish-btn {
+      background: linear-gradient(135deg, #ff6b95, #ff4d7a);
+      color: white;
+      border: none;
+      padding: 18px 48px;
+      border-radius: 50px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(255, 107, 149, 0.4);
+    }
+
+    .wish-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 107, 149, 0.6);
+    }
+
+    #wish-message {
+      margin-top: 30px;
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(24px, 5vw, 42px);
+      color: #ff6b95;
+      opacity: 0;
+      transition: all 0.8s ease;
+      text-shadow: 0 0 20px rgba(255, 107, 149, 0.5);
+    }
+
+    #wish-message.show {
+      opacity: 1;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: rgba(244, 167, 185, 0.5);
+      font-size: 13px;
+      font-family: 'Lora', serif;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .message-box {
+        padding: 36px 22px;
+      }
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLOATING HEARTS -->
+  <div class="hearts-container" id="hearts"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-subtitle">✨ A special day for a special soul ✨</p>
+    <h1>Happy Birthday</h1>
+    <p class="hero-name">Balikis Aramide Omotoyosi</p>
+    <div class="hero-divider">🌹💕🌹</div>
+    <p class="alma">Mí Alma</p>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="section">
+    <h2 class="section-title">💕 Our Beautiful Moments</h2>
+    <div class="gallery" id="gallery">
+
+      <!-- Replace the src="your-photo-1.jpg" with your actual image file names -->
+      <!-- Example: src="photo1.jpg" — make sure the images are in the same folder as this file -->
+
+      <div class="photo-card">
+        <img src="birthday1.jpeg" alt="Our photo">
+      </div>
+      <div class="photo-card">
+        <img src="birthday2.jpeg" alt="Our photo">
+      </div>
+      <div class="photo-card">
+        <img src="birthday3.jpeg" alt="Our photo">
+      </div>
+      <div class="photo-card">
+        <img src="birthday4.jpeg" alt="Our photo">
+      </div>
+      <div class="photo-card">
+        <img src="birthday5.jpeg" alt="Our photo">
+      </div>
+      <div class="photo-card">
+        <img src="birthday6.jpeg" alt="Our photo">
+      </div>
+      <div class="photo-card">
+        <img src="birthday7.jpeg" alt="Our photo">
+      </div>
+      <div class="photo-card">
+        <img src="birthday8.jpeg" alt="Our photo">
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- REASONS -->
+  <section class="section reasons-bg">
+    <h2 class="section-title">💖 Why I Love You</h2>
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <div class="reason-icon">💝</div>
+        <p>I love you because you're such a beautiful, kind, and amazing person, and your heart is one of the things that makes you special to me.</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">😍</div>
+        <p>I love your beautiful body and your height too — it just fits me perfectly, and somehow makes us look so good together.</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">🌹</div>
+        <p>I've seen thousands of beautiful girls, but somehow, my heart and my spirit chose you. And that choice is one I'm grateful for every day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO SECTION -->
+<section class="section">
+  <h2 class="section-title">🎥 Us 💕</h2>
+  <div style="text-align: center;">
+    <video
+      controls
+      style="
+        max-width: 700px;
+        width: 100%;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 107, 149, 0.4);
+        box-shadow: 0 0 30px rgba(255, 107, 149, 0.3);
+      "
+    >
+      <source src="ourvideo.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+  <!-- BIRTHDAY MESSAGE -->
+  <section class="section">
+    <h2 class="section-title">💌 My Heart to Yours</h2>
+    <div class="message-box">
+      <span class="quote-mark">"</span>
+      <p>Happy 20th birthday, my love. 🌹 I'm wishing you a beautiful year filled with happiness, success, peace, and countless blessings.</p>
+      <p>As you step into this new chapter, I pray that you continue to grow into the amazing person you're meant to be and leave behind anything that could ever come between us or hurt the love we're building together.</p>
+      <p>I hope you always know how deeply I love you and how much you mean to me. I wish I could celebrate you in the grandest way today, but even if I can't give you everything I wish I could, I promise to keep showing you my love in all the little ways — not just on your birthday but every day.</p>
+      <p>You deserve to feel loved, cherished, and appreciated always. My greatest wish is that by your next birthday, we'll both be in an even better place — stronger, happier, and more grateful for everything we've overcome and built together.</p>
+      <p>I'm so thankful to have you in my life, and I look forward to creating many more beautiful memories with you.</p>
+      <div class="message-sign">Happy birthday, my heart. I love you endlessly. 💕</div>
+      <div class="message-sign" style="font-size:20px; margin-top:10px; color:#f4a7b9;">— Your Ayomide 🌹</div>
+    </div>
+  </section>
+
+  <!-- WISH BUTTON -->
+  <section class="wish-section">
+    <button class="wish-btn" onclick="makeWish()">🎂 Click to Make a Wish 🎂</button>
+    <div id="wish-message">Happy Birthday Balikis! 🎉🌹💕</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Made with 💕 by Ayomide, just for you — Mí Alma 🌹</p>
+  </footer>
+
+  <script>
+    // FLOATING HEARTS
+    function createHeart() {
+      const hearts = document.getElementById('hearts')
+      const heart = document.createElement('div')
+      heart.classList.add('heart')
+      heart.innerHTML = ['🌹', '💕', '❤️', '💖', '🌸', '💗'][Math.floor(Math.random() * 6)]
+      heart.style.left = Math.random() * 100 + 'vw'
+      heart.style.fontSize = (Math.random() * 20 + 12) + 'px'
+      heart.style.animationDuration = (Math.random() * 6 + 6) + 's'
+      heart.style.animationDelay = Math.random() * 3 + 's'
+      hearts.appendChild(heart)
+      setTimeout(() => heart.remove(), 12000)
+    }
+
+    setInterval(createHeart, 600)
+
+    // PHOTO LOADER
+    function loadImage(input, cardId) {
+      const file = input.files[0]
+      if (!file) return
+      const reader = new FileReader()
+      const num = cardId.replace('card', '')
+      reader.onload = function(e) {
+        document.getElementById('preview' + num).src = e.target.result
+        document.getElementById(cardId).style.display = 'block'
+        input.closest('.photo-card').style.display = 'none'
+      }
+      reader.readAsDataURL(file)
+    }
+
+    // BIRTHDAY WISH
+    function makeWish() {
+      const msg = document.getElementById('wish-message')
+      msg.classList.add('show')
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createHeart, i * 100)
+      }
+    }
+  </script>
+
+</body>
+</html>
